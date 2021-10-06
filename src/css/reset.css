@@ -1,74 +1,34 @@
-/* Box sizing rules */
+/* ========= */
+/* RESET CSS */
+/* ========= */
+
+/* Set box-sizing and font-size default on html element */
+html {
+  /* 62.5% of 16px base font size is 10px */
+  font-size: 62.5%;
+
+  /* Ensure padding factored into element width and height calculation */
+  box-sizing: border-box;
+}
+
+body {
+  /* Reset visible font-size to 16px default via rem units */
+  font-size: 1.6rem;
+
+  /* Set minimum height of body to be the height of the viewpoer */
+  min-height: 100vh;
+
+  /* Set default page width to 100% of parent (html element) */
+  width: 100%;
+}
+
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  font-size: 62.5%;
-}
+  /* Allow box-sizing of bordder-box to be inherited by all elements */
+  box-sizing: inherit;
 
-/* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
+  /* Remove default margin and padding */
   margin: 0;
-}
-
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
-  list-style: none;
-}
-
-/* Set core root defaults */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
-  display: block;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-   scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  padding: 0;
 }
