@@ -25,6 +25,7 @@ function start() {
   // Initialize start x and y positions
   const x = Math.floor(Math.random() * canvas.width);
   const y = Math.floor(Math.random() * canvas.height);
+
   // Create a dot on the canvas which represents where
   // the start is
   ctx.fillRect(x - ctx.lineWidth / 2, y - ctx.lineWidth / 2, 10, 10);
@@ -37,8 +38,8 @@ function start() {
   // ctx.closePath();
   // ctx.stroke();
   // ctx.fill();
-  // ctx.strokeStyle = "black";
-  // ctx.fillStyle = "coral";
+  ctx.strokeStyle = randomHSL();
+  // ctx.fillStyle = randomHSL();
   return [x, y];
 }
 
@@ -47,51 +48,6 @@ let [x, y] = start();
 // ===================
 // CANVAS MANIPULATION
 // ===================
-
-// Create functions for drawing on the canvas when an arrow key is pressed
-function up() {
-  // Update value of y
-  y -= drawSpeed;
-
-  // Add a new value to the path
-  ctx.lineTo(x, y);
-
-  // render the path on the canvas
-  ctx.stroke();
-}
-
-function down() {
-  // Update value of y
-  y += drawSpeed;
-
-  // Add a new value to the path
-  ctx.lineTo(x, y);
-
-  // render the path on the canvas
-  ctx.stroke();
-}
-
-function left() {
-  // Update value of y
-  x -= drawSpeed;
-
-  // Add a new value to the path
-  ctx.lineTo(x, y);
-
-  // render the path on the canvas
-  ctx.stroke();
-}
-
-function right() {
-  // Update value of y
-  x += drawSpeed;
-
-  // Add a new value to the path
-  ctx.lineTo(x, y);
-
-  // render the path on the canvas
-  ctx.stroke();
-}
 
 // Create an event handler to control what happens when
 // an arrow key is pressed
@@ -104,24 +60,32 @@ function arrowKeys(event) {
     event.preventDefault();
   }
 
-  switch (keyCode) {
-    // UP
-    case 38:
-      up();
-      break;
-    // DOWN
-    case 40:
-      down();
-      break;
-    // LEFT
-    case 37:
-      left();
-      break;
-    // RIGHT
-    case 39:
-      right();
-      break;
+  // Move Up
+  if (keyCode === 38) {
+    // Update value of y
+    y -= drawSpeed;
   }
+  // Move Down
+  else if (keyCode === 40) {
+    // Update value of y
+    y += drawSpeed;
+  }
+  // Move Left
+  else if (keyCode === 37) {
+    // Update value of x
+    x -= drawSpeed;
+  }
+  // Move Right
+  else if (keyCode === 39) {
+    // Update value of x
+    x += drawSpeed;
+  }
+
+  // Add a new value to the path
+  ctx.lineTo(x, y);
+
+  // render the path on the canvas
+  ctx.stroke();
 }
 
 // Create a function to clear the canvas and restart when the shake button is pressed
@@ -135,10 +99,19 @@ function clear() {
 // Create a function to "shake" the canvas when the shake button is pressed and reset it
 function shake() {
   canvas.classList.add("apply-shake");
-  // canvas.classList.remove("apply-shake");
+}
+
+// Create a function for picking a random HSL color
+function randomHSL() {
+  // Obtain a random number between 0 and 359
+  // NOTE: 0 and 360 are the same
+  const degree = Math.floor(Math.random() * 360);
+
+  return `hsl(${degree}, 100%, 50%)`;
 }
 
 // Create function for changing color of canvas stroke
+function changeColor() {}
 
 // ===============
 // EVENT LISTENERS
