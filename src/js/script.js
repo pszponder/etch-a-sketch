@@ -16,12 +16,19 @@ ctx.lineWidth = 10;
 // drawSpeed pixels on the canvas in the given direction
 const drawSpeed = 20;
 
+// Set the Hue color to 0
+// This will be used to set the initial color of the cursor
+let hue = Math.floor(Math.random() * 360);
+
 // =====================
 // CANVAS INITIALIZATION
 // =====================
 
 // Pick a random start location for the canvas
 function start() {
+  // Set initial stroke Color
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+
   // Initialize start x and y positions
   const x = Math.floor(Math.random() * canvas.width);
   const y = Math.floor(Math.random() * canvas.height);
@@ -38,8 +45,9 @@ function start() {
   // ctx.closePath();
   // ctx.stroke();
   // ctx.fill();
-  ctx.strokeStyle = randomHSL();
-  // ctx.fillStyle = randomHSL();
+  // ctx.strokeStyle = black;
+  // ctx.fillStyle = coral;
+
   return [x, y];
 }
 
@@ -62,24 +70,24 @@ function arrowKeys(event) {
 
   // Move Up
   if (keyCode === 38) {
-    // Update value of y
     y -= drawSpeed;
   }
   // Move Down
   else if (keyCode === 40) {
-    // Update value of y
     y += drawSpeed;
   }
   // Move Left
   else if (keyCode === 37) {
-    // Update value of x
     x -= drawSpeed;
   }
   // Move Right
   else if (keyCode === 39) {
-    // Update value of x
     x += drawSpeed;
   }
+
+  // Update stroke color
+  hue += 2;
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
   // Add a new value to the path
   ctx.lineTo(x, y);
@@ -92,6 +100,7 @@ function arrowKeys(event) {
 function clear() {
   console.log("cleared");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   // Start at a new random location to start drawing again
   [x, y] = start();
 }
@@ -100,18 +109,6 @@ function clear() {
 function shake() {
   canvas.classList.add("apply-shake");
 }
-
-// Create a function for picking a random HSL color
-function randomHSL() {
-  // Obtain a random number between 0 and 359
-  // NOTE: 0 and 360 are the same
-  const degree = Math.floor(Math.random() * 360);
-
-  return `hsl(${degree}, 100%, 50%)`;
-}
-
-// Create function for changing color of canvas stroke
-function changeColor() {}
 
 // ===============
 // EVENT LISTENERS
