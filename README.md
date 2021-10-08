@@ -28,15 +28,7 @@ Create a working version of an Etch-a-Sketch
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./images/screenshot.png)
 
 ### Links
 
@@ -55,8 +47,6 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 I would definately like to add some additional interactivity to this project by perhaps adding 2 knob buttons to emulate the experience you would get on a real Etch-a-Sketch.
 
 This project would benefit from a mobile version as well.
-
-Currently, the stroke color changes colors as you write but the whole stroke, from start to finish changes color. I would like to closer replicate the implementation that Wes Bos has where you can see the stroke has a rainbow color affect.
 
 ### Useful resources
 
