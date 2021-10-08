@@ -101,7 +101,7 @@ function arrowKeys(event) {
 
   // Update stroke color
   hue += 2;
-  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+  ctx.strokeStyle = `hsl(${hue}, 100%, 45%)`;
 
   // Creat new path end-point
   ctx.lineTo(x, y);

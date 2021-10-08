@@ -21,7 +21,7 @@ h1 {
 
 canvas {
   border: 3rem solid red;
-  background: white;
+  background: hsl(0, 0%, 85%);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 1rem;
   /* Set the width and height to half
