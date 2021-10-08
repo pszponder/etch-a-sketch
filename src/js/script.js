@@ -9,7 +9,11 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
 // Set the line width
-ctx.lineWidth = 10;
+ctx.lineWidth = 20;
+
+// Use rounded edges when drawing lines (default is square);
+ctx.lineJoin = "round";
+ctx.lineCap = "round";
 
 // Set the movement speed of the arrow keys when drawing
 // each press of an arrow button results in a line of
@@ -35,11 +39,17 @@ function start() {
 
   // Create a dot on the canvas which represents where
   // the start is
-  ctx.fillRect(x - ctx.lineWidth / 2, y - ctx.lineWidth / 2, 10, 10);
+  // ctx.fillRect(x - ctx.lineWidth / 2, y - ctx.lineWidth / 2, 10, 10);
 
-  // Begin new path / reset current path
+  // Begin new path
+  // This is creating the path start-point
   ctx.beginPath();
   ctx.moveTo(x, y);
+
+  // Complete the new path (actually draw the dot on the canvas)
+  // This is creating the path end-point
+  ctx.lineTo(x, y);
+  ctx.stroke();
   // ctx.lineTo(x + 20, y + 20);
   // ctx.lineTo(x + 50, y - 30);
   // ctx.closePath();
@@ -60,6 +70,10 @@ let [x, y] = start();
 // Create an event handler to control what happens when
 // an arrow key is pressed
 function arrowKeys(event) {
+  // Start a new Path
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+
   const keyCode = event.keyCode;
 
   // Prevent default so that arrow keys don't move
@@ -89,7 +103,7 @@ function arrowKeys(event) {
   hue += 2;
   ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
-  // Add a new value to the path
+  // Creat new path end-point
   ctx.lineTo(x, y);
 
   // render the path on the canvas
